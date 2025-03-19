@@ -19,4 +19,5 @@ Create a SEPARATED folder for running the game (it will delete all files in the 
 
 ## Simple Q&A
 Q: How to change the game language?
+
 A: Open game settings and click the change language button
