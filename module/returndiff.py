@@ -1,43 +1,24 @@
-from os.path import exists
+from os.path import exists, join
 import pickle
+from pathlib import Path
 
 
 def diff(dif):
-    # key = b"hhhuuugggooo111333000hugohugohugoeeeeeeeeee="
-    # cs = Fernet(key)
-
-    # def readfile(cs: object, filename: str):
     def readfile(filename: str):
-        if not exists(f"data\\{filename}.txt"):
-            a = open(f"data\\{filename}.txt", "w")
-            if filename == "hp":
-                content = "100"
-            elif filename == "playerinfo":
-                content = "Player|.20"
-            elif filename == "password":
-                content = ""
-            elif filename == "cu":
-                content = "1"
-            elif filename == "cuosf":
-                content = "1"
-            elif filename == "langchoose":
-                content = "tc"
-            elif filename == "darkmodecolor":
-                content = "#000000"
-            elif filename == "difficult":
-                content = "1"
-            else:
-                content = "0"
-            # a.write(cs.encrypt(content.encode()).decode())
-            pickle.dump(content, a)
+        data_path = join(Path(__file__).parent.parent, "data")
+        file_path = join(data_path, f"{filename}.txt")
+
+        if not exists(file_path):
+            a = open(file_path, "w")
+            pickle.dump("tc", a)
             a.close()
-        with open(f"data\\{filename}.txt", "rb") as ffile:
-            # result = ffile.read()
+            return "tc"
+
+        with open(file_path, "rb") as ffile:
             result = pickle.load(ffile)
-        # return cs.decrypt(result.encode()).decode()
+
         return result
 
-    # langchoose = readfile(cs, "langchoose")
     langchoose = readfile("langchoose")
     if langchoose == "sc":
         import lang.sc as lang
