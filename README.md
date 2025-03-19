@@ -8,11 +8,14 @@ Create a SEPARATED folder for running the game (it will delete all files in the 
 > [!TIP]
 > The game will install required modules automatically
 1. Create a SEPARATED folder for running the game (if haven't created)
-2. Run game_updater.py to install / update the game
+<!-- 2. Run game_updater.py to install / update the game
 3. Wait for downloaded and installed / updated
 4. Close the updater window
 5. Open game.py
-6. Have Fun!
+6. Have Fun! -->
+2. Clone this repo
+3. Run game.py
+4. Have Fun!
 
 ### How to Play?
 ~~No tutorial~~
