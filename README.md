@@ -17,9 +17,6 @@ Create a SEPARATED folder for running the game (it will delete all files in the 
 3. Run game.py
 4. Have Fun!
 
-### How to Play?
-~~No tutorial~~
-
 ## Simple Q&A
 Q: How to change the game language?
 
