@@ -7,8 +7,6 @@ Windows (recommended)
 Create a SEPARATED folder for running the game (it will delete all files in the folder if you choose yes in the prompt)
 
 ## Installation
-> [!TIP]
-> The game will install required modules automatically
 1. Create a SEPARATED folder for running the game (if haven't created)
 <!-- 2. Run game_updater.py to install / update the game
 3. Wait for downloaded and installed / updated
@@ -19,8 +17,9 @@ Create a SEPARATED folder for running the game (it will delete all files in the 
 ```
 git clone https://github.com/hugohugo130/hugo_multiplayer_survival.git
 ```
-3. Run game.py
-4. Have Fun!
+3. Run ```game_updater.py``` (It will download the game and anything)
+4. Run ```game.py```
+5. Have Fun!
 
 ### How to Play?
 ~~No tutorial~~

@@ -19,8 +19,10 @@ Windows (建議使用)
 git clone https://github.com/hugohugo130/hugo_multiplayer_survival.git
 
 ```
-3. 運行game.py
-4. 玩的開心！
+3. 執行 ```game_updater.py``` (它將下載遊戲和任何內容)
+4. 運行 ```game.py```
+5. 玩得開心！
+
 
 ### 怎麼玩？
 ~~沒有教學~~
