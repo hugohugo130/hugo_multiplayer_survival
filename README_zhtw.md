@@ -1,5 +1,7 @@
 ## 安裝前你需要
 安裝 Python >= 3.6 (建議使用 3.12.6 或 3.13，因為已經測試過)
+安裝 Git
+Windows (建議使用)
 
 建立一個**單獨**的資料夾來運行遊戲（如果在提示框中點擊“是”，它將刪除資料夾中的所有檔案）
 
@@ -13,6 +15,10 @@
 5. 打開game.py
 6. 玩得開心！ -->
 2. 複製這個Github儲存庫
+```
+git clone https://github.com/hugohugo130/hugo_multiplayer_survival.git
+
+```
 3. 運行game.py
 4. 玩的開心！
 
