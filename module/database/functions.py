@@ -1,10 +1,12 @@
 import threading
 from time import time as getts
 import hashlib
+from time import sleep as slp
 
 try:
     import mysql.connector as mysql
     from mysql.connector import Error
+    from tkinter import messagebox
 except ModuleNotFoundError:
     from subprocess import run
     from sys import executable
@@ -95,9 +97,17 @@ class DatabaseModule:
         self.port = "3307"
         self.username = "SurvivalGameDatabase_waveleast"
         self.loginpassword = "26c2e76ce7825addd2ef214dd23636b04d375a3a"
+        # =================================
+        # self.hostname = "fdb1029.awardspace.net"
+        # self.database = "4607383_multiplayersurvival"
+        # self.port = "3306"
+        # self.username = "4607383_multiplayersurvival"
+        # self.loginpassword = "26c2e76ce7825addd2ef214dd23636b04d375a3a"
+        # =================================
         self.database_table_name = "players"
         self.db = None
         self.cursor = None
+        self.retry_count = 0
 
     def connect(self):
         try:
@@ -111,8 +121,16 @@ class DatabaseModule:
             if self.db.is_connected():
                 self.cursor = self.db.cursor()
         except Error as e:
-            print("連接到 MySQL 時出錯:", e)
-            raise e
+            if e.errno == 2003 and self.retry_count <= 3:
+                messagebox.showwarning("網絡連接", "網絡不可用，無法連線，請檢查網絡連接。按下確認3秒後重試")
+                self.retry_count += 1
+                slp(3)
+                self.connect()
+            elif e.errno == 2003:
+                messagebox.showerror("退出", "網絡仍然不可用，請檢查網絡連接")
+            else:
+                print("連接到 MySQL 時出錯:", e)
+                raise e
 
     def close_connection(self):
         if self.db and self.db.is_connected():

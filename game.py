@@ -1,3 +1,4 @@
+print("...Loading...")
 import sys
 import pickle
 from os.path import exists, abspath, dirname, join as path_join
@@ -799,8 +800,10 @@ def savefile(content: str | int | float, filename: str) -> None:
 langchoose = readfile("langchoose")
 if langchoose == "sc":
     import lang.sc as lang
-else:
+elif langchoose == "tc":
     import lang.tc as lang
+else:
+    import lang.eng as lang
 
 log_window: Toplevel | None = None
 game = Tk(className=lang.survivalgame)
@@ -1678,8 +1681,9 @@ def opengamesettings() -> None:
         def changelang() -> None:
             global langchoose, lang
             language_choices = [
-                {"name": "繁體中文", "value": "tc"},
-                {"name": "简体中文", "value": "sc"},
+                {"name": "繁體中文 trad. chin.", "value": "tc"},
+                {"name": "简体中文 simp. chin.", "value": "sc"},
+                {"name": "英文 english", "value": "eng"},
             ]
 
             # 創建語言選擇視窗
@@ -1707,12 +1711,12 @@ def opengamesettings() -> None:
             selected_lang.set(langchoose)
 
             # 語言選項
-            for lang in language_choices:
+            for lang_option in language_choices:
                 Radiobutton(
                     lang_frame,
-                    text=lang["name"],
+                    text=lang_option["name"],
                     variable=selected_lang,
-                    value=lang["value"],
+                    value=lang_option["value"],
                 ).pack(anchor="w", pady=5)
 
             # 確認按鈕
@@ -2120,6 +2124,7 @@ else:
 register(saveexit)  # 改用atexit.register
 
 try:
+    print("Loaded!")
     game.mainloop()
 except KeyboardInterrupt:
     saveexit()
